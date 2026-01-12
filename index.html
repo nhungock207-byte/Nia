@@ -3,87 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Pink Schedule - Quản lý thời khóa biểu</title>
+    <title>My Pinky Schedule 2026</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header class="header-section">
-        <h1>🌸 My Schedule 🌸</h1>
-        <div class="timetable-wrapper">
-            <table id="timetable">
-                <thead>
-                    <tr>
-                        <th>Buổi</th>
-                        <th>Thứ 2</th>
-                        <th>Thứ 3</th>
-                        <th>Thứ 4</th>
-                        <th>Thứ 5</th>
-                        <th>Thứ 6</th>
-                        <th>Thứ 7</th>
-                        <th>CN</th>
-                    </tr>
-                </thead>
-                <tbody id="timetable-body">
-                    </tbody>
-            </table>
-        </div>
+    <header class="main-header">
+        <h1>🌸 My Schedule 2026 🌸</h1>
     </header>
 
-    <main class="form-section">
-        <div class="card">
-            <h2 id="form-title">Thêm Lịch Trình Mới</h2>
-            <form id="schedule-form">
-                <input type="hidden" id="edit-id"> <div class="form-group">
-                    <label>Tên công việc/môn học</label>
-                    <input type="text" id="task-name" placeholder="Ví dụ: Học ReactJS..." required>
+    <main>
+        <section id="timetable-display" class="sticky-section">
+            <div id="months-container" class="months-grid">
                 </div>
+        </section>
 
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Thứ trong tuần</label>
-                        <select id="day-of-week">
-                            <option value="Mon">Thứ 2</option>
-                            <option value="Tue">Thứ 3</option>
-                            <option value="Wed">Thứ 4</option>
-                            <option value="Thu">Thứ 5</option>
-                            <option value="Fri">Thứ 6</option>
-                            <option value="Sat">Thứ 7</option>
-                            <option value="Sun">Chủ nhật</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Buổi</label>
-                        <select id="session">
-                            <option value="Morning">Sáng</option>
-                            <option value="Afternoon">Chiều</option>
-                            <option value="Evening">Tối</option>
-                        </select>
-                    </div>
-                </div>
+        <hr class="divider">
 
-                <div class="form-row">
+        <section id="management-section" class="form-section">
+            <div class="card">
+                <h2 id="form-title">Thêm Lịch Trình Mới</h2>
+                <form id="schedule-form">
+                    <input type="hidden" id="edit-id">
+                    
                     <div class="form-group">
-                        <label>Bắt đầu</label>
-                        <input type="time" id="start-time" required>
+                        <label>Tên công việc/môn học</label>
+                        <input type="text" id="task-name" placeholder="Ví dụ: Học Javascript..." required>
                     </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Chọn Tháng</label>
+                            <select id="select-month"></select>
+                        </div>
+                        <div class="form-group">
+                            <label>Tuần (1-4)</label>
+                            <select id="select-week">
+                                <option value="1">Tuần 1</option>
+                                <option value="2">Tuần 2</option>
+                                <option value="3">Tuần 3</option>
+                                <option value="4">Tuần 4</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Thứ</label>
+                            <select id="select-day">
+                                <option value="2">Thứ 2</option>
+                                <option value="3">Thứ 3</option>
+                                <option value="4">Thứ 4</option>
+                                <option value="5">Thứ 5</option>
+                                <option value="6">Thứ 6</option>
+                                <option value="7">Thứ 7</option>
+                                <option value="0">Chủ Nhật</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Buổi</label>
+                            <select id="select-session">
+                                <option value="morning">Sáng</option>
+                                <option value="afternoon">Chiều</option>
+                                <option value="evening">Tối</option>
+                            </select>
+                        </div>
+                    </div>
+
                     <div class="form-group">
-                        <label>Kết thúc</label>
-                        <input type="time" id="end-time" required>
+                        <label>Thời gian (Bắt đầu - Kết thúc)</label>
+                        <input type="text" id="task-time" placeholder="Ví dụ: 08:00 - 10:00">
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <label>Ghi chú</label>
-                    <textarea id="note" rows="2" placeholder="Thêm ghi chú nhỏ..."></textarea>
-                </div>
+                    <div class="form-group">
+                        <label>Ghi chú</label>
+                        <textarea id="task-note" rows="2"></textarea>
+                    </div>
 
-                <div class="button-group">
-                    <button type="submit" id="btn-save" class="btn btn-add">➕ Thêm lịch trình</button>
-                    <button type="button" id="btn-cancel" class="btn btn-cancel" style="display: none;">Hủy sửa</button>
-                </div>
-            </form>
-        </div>
+                    <div class="button-group">
+                        <button type="submit" id="btn-save" class="btn btn-primary">➕ Lưu lịch trình</button>
+                        <button type="button" id="btn-cancel" class="btn btn-secondary" style="display:none;">Hủy</button>
+                    </div>
+                </form>
+            </div>
+        </section>
     </main>
 
     <script src="script.js"></script>
